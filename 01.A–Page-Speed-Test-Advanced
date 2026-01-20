@@ -1,0 +1,157 @@
+# 01.A – Page Speed Test Advanced
+
+## Posisi di Roadmap
+- **Phase:** 3 (Performance & UX)
+- **Bukan Health Score** ❌
+- **Fokus:** PageSpeed Insights (Mobile & Desktop)
+- **Status:** Lanjutan dari PageSpeed Test dasar yang sudah berjalan
+
+> Catatan penting: Phase 4 = Health Score (gabungan teknikal + SEO + content). Canvas ini **hanya Page Speed**, jangan dicampur.
+
+---
+
+## Tujuan Fitur
+Mengubah hasil mentah PageSpeed (angka & metrik teknis) menjadi:
+- Insight yang **mudah dipahami user non-teknis**
+- Kesimpulan yang **actionable**
+- Rekomendasi **prioritas**, bukan checklist panjang
+
+---
+
+## Data Source
+- **Google PageSpeed Insights API (Lighthouse)**
+- Strategy:
+  - mobile
+  - desktop
+- Mode:
+  - Lab Data (default, selalu tersedia)
+  - Field Data (CrUX) → opsional, tampil jika ada
+
+---
+
+## Data yang Digunakan
+### Core Metrics
+- Performance Score
+- LCP (Largest Contentful Paint)
+- INP (Interaction to Next Paint)
+- CLS (Cumulative Layout Shift)
+
+### Field Metrics (jika tersedia)
+- LCP p75
+- INP p75
+- CLS p75
+
+### Opportunities
+- audit Lighthouse (estimated savings)
+- opportunity title
+- description
+
+---
+
+## Struktur UI (Advanced)
+
+### 1. Device Tabs
+- Mobile | Desktop
+- Setiap tab = 1 hasil run terakhir
+
+---
+
+### 2. Speed Summary (Auto-generated)
+**Tujuan:** menggantikan interpretasi manual user
+
+Contoh output:
+> “Secara keseluruhan, performa Desktop website Anda tergolong **baik** dengan skor 89. Waktu LCP sudah sangat cepat (0.94s), namun masih terdapat potensi optimasi pada JavaScript yang tidak terpakai untuk meningkatkan stabilitas interaksi.”
+
+**Rules singkat:**
+- Score ≥ 90 → Excellent
+- 70–89 → Good
+- < 70 → Needs Improvement
+
+---
+
+### 3. Bottleneck Highlight
+Menentukan **1–2 masalah utama**, bukan semua.
+
+Prioritas otomatis:
+1. LCP
+2. INP
+3. CLS
+4. TTFB / JS blocking
+
+Output:
+- Ikon + teks singkat
+- Dampak ke UX
+
+---
+
+### 4. Top Recommendations (Prioritized)
+Dari Lighthouse Opportunities → dipilih **Top 3** saja
+
+Kriteria seleksi:
+- Estimated saving tertinggi
+- Dampak ke LCP / INP
+
+Contoh:
+1. Reduce unused JavaScript
+2. Optimize CSS delivery
+3. Improve server response time
+
+Setiap item:
+- What
+- Why it matters
+- Link Learn More (Google Docs)
+
+---
+
+### 5. Mobile vs Desktop Comparison (Optional Toggle)
+
+| Metric | Mobile | Desktop | Insight |
+|------|--------|---------|--------|
+| Performance | 72 | 89 | Desktop lebih stabil |
+| LCP | 2.9s | 0.94s | Mobile bottleneck |
+| CLS | 0.12 | 0.04 | Aman |
+
+Auto insight:
+> “Performa Mobile tertinggal signifikan dibanding Desktop, sehingga optimasi Mobile sebaiknya diprioritaskan.”
+
+---
+
+## Output yang Disimpan (Backend)
+
+Tabel: `ane_pagespeed_runs`
+- website_id
+- url
+- strategy (mobile/desktop)
+- performance_score
+- lcp
+- inp
+- cls
+- field_data_json
+- opportunities_json
+- summary_text
+- created_at
+
+---
+
+## Yang Tidak Dilakukan di Phase Ini
+❌ Tidak ada Health Score
+❌ Tidak ada skor gabungan SEO + Speed
+❌ Tidak ada auto-fix / task planner
+❌ Tidak dibandingkan dengan competitor
+
+---
+
+## Output ke User (Nilai Produk)
+User mendapatkan:
+- Jawaban cepat: **“Web saya sudah oke atau belum?”**
+- Arah jelas: **apa yang harus dibenahi dulu**
+- Insight yang bisa langsung dikirim ke developer
+
+---
+
+## Jembatan ke Phase Berikutnya
+- Phase 3B: Speed vs Competitor
+- Phase 4: Health Score (SEO + Speed + Content + Tech)
+
+Canvas ini adalah **fondasi**, bukan tujuan akhir.
+

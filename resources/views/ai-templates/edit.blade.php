@@ -1,0 +1,1 @@
+@include('ai-templates.create')

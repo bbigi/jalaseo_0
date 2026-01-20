@@ -1,0 +1,115 @@
+{
+  "attrs": {
+    "width": 1080,
+    "height": 1920
+  },
+  "className": "Stage",
+  "children": [
+    {
+      "attrs": {},
+      "className": "Layer",
+      "children": [
+        {
+          "attrs": {
+            "x": 0,
+            "y": 0,
+            "width": 1080,
+            "height": 1920,
+            "fill": "#FFFFFF"
+          },
+          "className": "Rect"
+        },
+        {
+          "attrs": {
+            "x": 0,
+            "y": 280,
+            "width": 1080,
+            "height": 800,
+            "image": "{featured_image}",
+            "isVariable": true,
+            "variableName": "featured_image",
+            "initialConstraint": {
+              "type": "fill",
+              "width": 1080,
+              "height": 800,
+              "allowReposition": true
+            }
+          },
+          "className": "Image"
+        },
+        {
+          "attrs": {
+            "x": 0,
+            "y": 0,
+            "width": 1080,
+            "height": 280,
+            "fill": "{brand_color_primary}"
+          },
+          "className": "Rect"
+        },
+        {
+          "attrs": {
+            "x": 60,
+            "y": 60,
+            "width": 140,
+            "height": 140,
+            "image": "{brand_logo}",
+            "isVariable": true,
+            "variableName": "brand_logo",
+            "initialConstraint": {
+              "type": "fit",
+              "width": 140,
+              "allowReposition": true
+            }
+          },
+          "className": "Image"
+        },
+        {
+          "attrs": {
+            "x": 220,
+            "y": 100,
+            "text": "{article_title}",
+            "fontSize": 48,
+            "fontFamily": "Inter",
+            "fontStyle": "bold",
+            "fill": "#FFFFFF",
+            "width": 800,
+            "isVariable": true,
+            "variableName": "article_title"
+          },
+          "className": "Text"
+        },
+        {
+          "attrs": {
+            "x": 60,
+            "y": 1150,
+            "text": "{article_excerpt}",
+            "fontSize": 24,
+            "fontFamily": "Inter",
+            "fill": "#333333",
+            "width": 960,
+            "lineHeight": 1.5,
+            "isVariable": true,
+            "variableName": "article_excerpt"
+          },
+          "className": "Text"
+        },
+        {
+          "attrs": {
+            "x": 60,
+            "y": 1800,
+            "text": "{website_url}",
+            "fontSize": 20,
+            "fontFamily": "Inter",
+            "fill": "{brand_color_primary}",
+            "fontStyle": "bold",
+            "isVariable": true,
+            "variableName": "website_url",
+            "fillVariable": "brand_color_primary"
+          },
+          "className": "Text"
+        }
+      ]
+    }
+  ]
+}
