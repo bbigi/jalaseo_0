@@ -9,7 +9,7 @@
 @section('content')
 <!-- Top Bar -->
 <div class="bg-white border-b border-gray-200 px-8 py-4">
-    <h2 class="text-2xl font-bold text-gray-900">Welcome back, {{ auth()->user()->name }}! 👋</h2>
+    <h2 class="text-2xl font-bold text-gray-900">Welcome , {{ auth()->user()->name }}! 👋</h2>
     <p class="text-gray-600 text-sm mt-1">Here's what's happening with your content</p>
 </div>
 
